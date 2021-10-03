@@ -37,9 +37,10 @@ namespace DotNetRestApi
             });
             
             string mySqlConnection = Configuration.GetConnectionString("MySqlConnection");
-            services.AddDbContext<MySqlContext>(options => {
-                options.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection));
+            services.AddDbContextPool<MySqlContext>(options => {
+               options.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection)); 
             });
+
 
         }
 
